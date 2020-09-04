@@ -6,7 +6,7 @@ namespace AtCoder.ABC106.B.Tests
     public class CalculatorTest
     {
         [Theory]
-        [MemberData(nameof(AnswersTestData))]
+        [MemberData(nameof(AnswersTestDatas))]
         public void GetAnswers(int N, int divisorsCount, IEnumerable<int> expected)
         {
             var calc = new Calculator();
@@ -14,14 +14,14 @@ namespace AtCoder.ABC106.B.Tests
             Assert.Equal(expected, calc.GetAnswers(N, divisorsCount));
         }
 
-        public static IEnumerable<object[]> AnswersTestData => new[]
+        public static TheoryData<int, int, IEnumerable<int>> AnswersTestDatas => new TheoryData<int, int, IEnumerable<int>>
         {
-            new object[]{ 105, 8, new[] { 105 } },
-            new object[]{ 7, 8, new int[] { } },
+            { 105, 8, new[] { 105 } },
+            { 7, 8, new int[] { } },
         };
 
         [Theory]
-        [MemberData(nameof(DivisorsTestData))]
+        [MemberData(nameof(DivisorsTestDatas))]
         public void GetDivisors(int value, IEnumerable<int> expected)
         {
             var calc = new Calculator();
@@ -29,10 +29,10 @@ namespace AtCoder.ABC106.B.Tests
             Assert.Equal(expected, calc.GetDivisors(value));
         }
 
-        public static IEnumerable<object[]> DivisorsTestData => new[]
+        public static TheoryData<int, IEnumerable<int>> DivisorsTestDatas => new TheoryData<int, IEnumerable<int>>
         {
-            new object[]{ 99, new[] { 1, 3, 9, 11, 33, 99 } },
-            new object[]{ 105, new[] { 1, 3, 5, 7, 15, 21, 35, 105 } },
+            { 99, new[] { 1, 3, 9, 11, 33, 99 } },
+            { 105, new[] { 1, 3, 5, 7, 15, 21, 35, 105 } },
         };
     }
 }

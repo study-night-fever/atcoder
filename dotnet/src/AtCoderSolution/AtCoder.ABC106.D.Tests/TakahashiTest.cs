@@ -7,74 +7,82 @@ namespace AtCoder.ABC106.D.Tests
     {
         [Theory]
         [MemberData(nameof(AnswerTestData))]
-        public void Answer(IEnumerable<Train> trains, IEnumerable<Problem> problems, IEnumerable<int> expected)
+        public void Answer(AnswerTestInput input, IEnumerable<int> expected)
         {
             var takahashi = new Takahashi();
 
-            Assert.Equal(expected, takahashi.Answer(trains, problems));
+            Assert.Equal(expected, takahashi.Answer(input.Trains, input.Problems));
         }
 
-        // å©Ç√ÇÁÇ¢ÅcÅc
-        public static IEnumerable<object[]> AnswerTestData()
+        public struct AnswerTestInput
         {
-            return new[]
+            public IEnumerable<Train> Trains;
+            public IEnumerable<Problem> Problems;
+        }
+
+        public static TheoryData<AnswerTestInput, IEnumerable<int>> AnswerTestData => new TheoryData<AnswerTestInput, IEnumerable<int>>
+        {
             {
-                new object[]
+                new AnswerTestInput
                 {
-                    new[]
+                    Trains = new[]
                     {
                         new Train(1, 1),
                         new Train(1, 2),
                         new Train(2, 2),
                     },
-                    new[]
+                    Problems = new[]
                     {
                         new Problem(1, 2),
                     },
-                    new[]
-                    {
-                        3,
-                    },
                 },
-                new object[]
+                new[]
                 {
-                    new[]
+                    3,
+                }
+            },
+            {
+                new AnswerTestInput
+                {
+                    Trains = new[]
                     {
                         new Train(1, 5),
                         new Train(2, 8),
                         new Train(7, 10),
                     },
-                    new[]
+                    Problems = new[]
                     {
                         new Problem(1, 7),
                         new Problem(3, 10),
                     },
-                    new[]
-                    {
-                        1,
-                        1,
-                    },
                 },
-                new object[]
+                new[]
                 {
-                    new[]
+                    1,
+                    1,
+                }
+            },
+            {
+                new AnswerTestInput
+                {
+                    Trains = new[]
                     {
                         new Train(1, 5),
                         new Train(2, 8),
                         new Train(7, 10),
                     },
-                    new[]
+                    Problems = new[]
                     {
                         new Problem(1, 7),
                         new Problem(3, 10),
                     },
-                    new[]
-                    {
-                        1,
-                        1,
-                    },
-                },
-            };
-        }
+                }
+                ,new[]
+                {
+                    1,
+                    1,
+                }
+            },
+        };
     }
 }
