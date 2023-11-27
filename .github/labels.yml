@@ -37,7 +37,7 @@ labels:
     color: d93f0b
 
 repos:
-  - name: ushibutatory/atcoder
+  - name: ushibutatory/atcoder-dotnet
     labels:
       - Priority/Critical
       - Priority/High
